@@ -2,7 +2,7 @@
 //Base class for any character (player or otherwise)
 class Character {
     constructor(health){
-        this.Health = health
+        this.Health = health;
         this.Spells = {
             Fireball: {
                 SpellName: "Fireball",
@@ -10,7 +10,7 @@ class Character {
                     spellTargetCharacter.Health = spellTargetCharacter.Health - 2;
                 }
             }
-        }
+        };
     }
 }
 

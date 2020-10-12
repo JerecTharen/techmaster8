@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Character from './Character/Character.js';
@@ -10,6 +10,17 @@ function App() {
 
   let EnemyCharacter = new Character(10);
   let PlayerCharacter = new Character(10);
+
+  const [enemyCharacterState, setEnemyCharacterState] = useState(EnemyCharacter);
+  const [playerCharacterState, setplayerCharacterState] = useState(PlayerCharacter);
+
+  const CastFireball = ()=>{
+    console.log("Casting Fireball");
+    console.log("Player Character", PlayerCharacter);
+    console.log("Enemy Character", EnemyCharacter);
+    PlayerCharacter.Spells.Fireball.Cast(EnemyCharacter);
+    setEnemyCharacterState(EnemyCharacter);
+  };
 
   return (
     <div className="App">
@@ -27,16 +38,9 @@ function App() {
           Learn React
         </a>
 
-        <h1>Enemy Health: {EnemyCharacter.Health}</h1>
-        <h1>Player Health: {PlayerCharacter.Health}</h1>
-        {(()=>{
-          console.log("testing test");
-          console.log("enemy health ", EnemyCharacter.Health);
-          console.log("player health ", PlayerCharacter.Health);
-          PlayerCharacter.Spells.Fireball.Cast(EnemyCharacter);
-          console.log("enemy health ", EnemyCharacter.Health);
-          console.log("player health ", PlayerCharacter.Health);
-        })()}
+        <h1>Enemy Health: {enemyCharacterState.Health}</h1>
+        <h1>Player Health: {playerCharacterState.Health}</h1>
+        <button id="fireballBtn" onClick={CastFireball}>Cast Fireball</button>
       </header>
     </div>
   );
