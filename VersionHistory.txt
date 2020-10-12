@@ -1,0 +1,16 @@
+This Project is in an undeveloped ALPHA state
+
+There are no features currently built.
+
+v0.0.1 - 10/12/2020 - Version History
+    - Project Structure:
+        Unit test for separate character health created.
+    - Feature Development:
+        Spells can be cast as an object on the Character object through dot notation
+
+
+
+TODO:
+
+1. INCOMPLETE: Characters can be created with health and the user can cast basic spells against an NPC
+    a)INCOMPLETE: Characters are all seperate objects
