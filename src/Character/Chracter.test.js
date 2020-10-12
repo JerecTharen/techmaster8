@@ -7,8 +7,8 @@ test('bad character hurt and good character healthy', () => {
 //   const linkElement = getByText(/learn react/i);
 //   expect(linkElement).toBeInTheDocument();
     //Set up Enemy Character Instance
-    let EnemyCharacter = Character;
-    let GoodCharacter = Character;
+    let EnemyCharacter = new Character(10);
+    let GoodCharacter = new Character(10);
 
     //Use Fireball and then target the enemy character
     GoodCharacter.Spells.Fireball.Cast(EnemyCharacter);

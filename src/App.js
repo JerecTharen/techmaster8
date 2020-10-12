@@ -8,8 +8,8 @@ import Character from './Character/Character.js';
 
 function App() {
 
-  let EnemyCharacter = Character;
-  let PlayerCharacter = Character;
+  let EnemyCharacter = new Character(10);
+  let PlayerCharacter = new Character(10);
 
   return (
     <div className="App">
@@ -29,14 +29,14 @@ function App() {
 
         <h1>Enemy Health: {EnemyCharacter.Health}</h1>
         <h1>Player Health: {PlayerCharacter.Health}</h1>
-        {/* {(()=>{
+        {(()=>{
           console.log("testing test");
           console.log("enemy health ", EnemyCharacter.Health);
           console.log("player health ", PlayerCharacter.Health);
           PlayerCharacter.Spells.Fireball.Cast(EnemyCharacter);
           console.log("enemy health ", EnemyCharacter.Health);
           console.log("player health ", PlayerCharacter.Health);
-        })()} */}
+        })()}
       </header>
     </div>
   );
