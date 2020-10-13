@@ -11,7 +11,8 @@ test('bad character hurt and good character healthy', () => {
     let GoodCharacter = new Character(10);
 
     //Use Fireball and then target the enemy character
-    GoodCharacter.Spells.Fireball.Cast(EnemyCharacter);
+    //Empty function is because of statechange callback
+    GoodCharacter.Spells.Fireball.Cast(EnemyCharacter, ()=>{});
 
     //Enemy should be at less health than the good character
     expect(EnemyCharacter.Health).toBeLessThan(GoodCharacter.Health);

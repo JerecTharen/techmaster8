@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Character from './Character/Character.js';
+import Character from './Character/Model/Character.js';
+import CharacterCard from './Character/View/CharacterCard.js';
 
 
 //let EnemyCharacter = Character();
 
 function App() {
 
-  let EnemyCharacter = new Character(10);
-  let PlayerCharacter = new Character(10);
-
-  const [enemyCharacterState, setEnemyCharacterState] = useState(EnemyCharacter);
-  const [playerCharacterState, setplayerCharacterState] = useState(PlayerCharacter);
+  
+  let PlayerCharacter = new Character(10, "Player");
+  
+  const [enemyCharacterState, setEnemyCharacterState] = useState(new Character(10, "Enemy"));
+  const [testState, setTestState] = useState(10);
 
   const CastFireball = ()=>{
-    console.log("Casting Fireball");
     console.log("Player Character", PlayerCharacter);
-    console.log("Enemy Character", EnemyCharacter);
-    PlayerCharacter.Spells.Fireball.Cast(EnemyCharacter);
-    setEnemyCharacterState(EnemyCharacter);
+    console.log("Enemy Player", enemyCharacterState.Health);
+    console.log("Casting Fireball");
+    PlayerCharacter.Spells.Fireball.Cast(enemyCharacterState, setEnemyCharacterState);
+    console.log("Player Character", PlayerCharacter);
+    console.log("Enemy Player", enemyCharacterState.Health);
   };
 
   return (
@@ -38,8 +40,8 @@ function App() {
           Learn React
         </a>
 
-        <h1>Enemy Health: {enemyCharacterState.Health}</h1>
-        <h1>Player Health: {playerCharacterState.Health}</h1>
+        <CharacterCard Health={PlayerCharacter.Health} Name={PlayerCharacter.Name} />
+        <CharacterCard Health={enemyCharacterState.Health} Name={enemyCharacterState.Name} />
         <button id="fireballBtn" onClick={CastFireball}>Cast Fireball</button>
       </header>
     </div>
