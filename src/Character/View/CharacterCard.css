@@ -1,0 +1,7 @@
+.CharacterCard{
+    border: black solid 3px;
+}
+
+.DeadCharacter{
+    border: red solid 3px;
+}

@@ -13,7 +13,6 @@ function App() {
   let PlayerCharacter = new Character(10, "Player");
   
   const [enemyCharacterState, setEnemyCharacterState] = useState(new Character(10, "Enemy"));
-  const [testState, setTestState] = useState(10);
 
   const CastFireball = ()=>{
     console.log("Player Character", PlayerCharacter);

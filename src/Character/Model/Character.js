@@ -7,13 +7,23 @@ class Character {
             Fireball: {
                 SpellName: "Fireball",
                 Cast: (spellTargetCharacter, callback)=>{
-                    spellTargetCharacter.Health = spellTargetCharacter.Health - 2;
+                    console.log("take damage", spellTargetCharacter.TakeDamage);
+                    spellTargetCharacter.Health = spellTargetCharacter.TakeDamage(2);
                     //Use spread operator so that object is cloned and state updates
                     callback({...spellTargetCharacter});
                 }
             }
         };
         this.Name = name;
+    }
+
+    TakeDamage(damage){
+        if(damage > this.Health){
+            return 0;
+        }
+        else{
+            return this.Health - damage;
+        }
     }
 }
 

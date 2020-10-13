@@ -7,8 +7,8 @@ test('bad character hurt and good character healthy', () => {
 //   const linkElement = getByText(/learn react/i);
 //   expect(linkElement).toBeInTheDocument();
     //Set up Enemy Character Instance
-    let EnemyCharacter = new Character(10);
-    let GoodCharacter = new Character(10);
+    let EnemyCharacter = new Character(10, "Enemy");
+    let GoodCharacter = new Character(10, "Good Guy");
 
     //Use Fireball and then target the enemy character
     //Empty function is because of statechange callback
@@ -16,4 +16,27 @@ test('bad character hurt and good character healthy', () => {
 
     //Enemy should be at less health than the good character
     expect(EnemyCharacter.Health).toBeLessThan(GoodCharacter.Health);
+});
+
+test('characters will not go below 0 health', ()=>{
+    let EnemyCharacter = new Character(1, "Enemy");
+    let GoodCharacter = new Character(10, "Good Guy");
+
+    GoodCharacter.Spells.Fireball.Cast(EnemyCharacter, ()=>{});
+
+    expect(EnemyCharacter.Health).toEqual(0);
+});
+
+test('fireball can have its effect applied more than once', ()=>{
+    let EnemyCharacter = new Character(10, "Enemy");
+    let GoodCharacter = new Character(10, "Good Guy");
+
+    GoodCharacter.Spells.Fireball.Cast(EnemyCharacter, ()=>{});
+    let healthAfterFirst = EnemyCharacter.Health;
+    GoodCharacter.Spells.Fireball.Cast(EnemyCharacter, ()=>{});
+    let healthAfterSecond = EnemyCharacter.Health;
+
+    expect(healthAfterSecond).toBeLessThan(healthAfterFirst);
+
+
 });
