@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Character from './Character/Model/Character.js';
-import CharacterCard from './Character/View/CharacterCard.js';
-
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Character from "./Character/Model/Character.js";
+import CharacterCard from "./Character/View/CharacterCard.js";
 
 //let EnemyCharacter = Character();
-
+const PlayerCharacter = new Character(10, "Player");
+const EnemyCharacter = new Character(10, "Enemy");
 function App() {
+  const [enemyCharacterHealth, setEnemyCharacterHealth] = useState(
+    EnemyCharacter.Health
+  );
 
-  
-  let PlayerCharacter = new Character(10, "Player");
-  
-  const [enemyCharacterState, setEnemyCharacterState] = useState(new Character(10, "Enemy"));
-
-  const CastFireball = ()=>{
+  const CastFireball = () => {
     console.log("Player Character", PlayerCharacter);
-    console.log("Enemy Player", enemyCharacterState.Health);
+    console.log("Enemy Character", EnemyCharacter);
     console.log("Casting Fireball");
-    PlayerCharacter.Spells.Fireball.Cast(enemyCharacterState, setEnemyCharacterState);
+    PlayerCharacter.Spells.Fireball.Cast(EnemyCharacter, (char) =>
+      setEnemyCharacterHealth(char.Health)
+    );
     console.log("Player Character", PlayerCharacter);
-    console.log("Enemy Player", enemyCharacterState.Health);
+    console.log("Enemy Character health", enemyCharacterHealth);
   };
 
   return (
@@ -39,9 +39,17 @@ function App() {
           Learn React
         </a>
 
-        <CharacterCard Health={PlayerCharacter.Health} Name={PlayerCharacter.Name} />
-        <CharacterCard Health={enemyCharacterState.Health} Name={enemyCharacterState.Name} />
-        <button id="fireballBtn" onClick={CastFireball}>Cast Fireball</button>
+        <CharacterCard
+          Health={PlayerCharacter.Health}
+          Name={PlayerCharacter.Name}
+        />
+        <CharacterCard
+          Health={enemyCharacterHealth}
+          Name={EnemyCharacter.Name}
+        />
+        <button id="fireballBtn" onClick={CastFireball}>
+          Cast Fireball
+        </button>
       </header>
     </div>
   );
