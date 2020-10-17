@@ -7,8 +7,8 @@ test('bad character hurt and good character healthy', () => {
 //   const linkElement = getByText(/learn react/i);
 //   expect(linkElement).toBeInTheDocument();
     //Set up Enemy Character Instance
-    let EnemyCharacter = new Character(10, "Enemy");
-    let GoodCharacter = new Character(10, "Good Guy");
+    let EnemyCharacter = new Character(10, 10, "Enemy");
+    let GoodCharacter = new Character(10, 10, "Good Guy");
 
     //Use Fireball and then target the enemy character
     //Empty function is because of statechange callback
@@ -19,8 +19,8 @@ test('bad character hurt and good character healthy', () => {
 });
 
 test('characters will not go below 0 health', ()=>{
-    let EnemyCharacter = new Character(1, "Enemy");
-    let GoodCharacter = new Character(10, "Good Guy");
+    let EnemyCharacter = new Character(1, 1, "Enemy");
+    let GoodCharacter = new Character(10, 10, "Good Guy");
 
     GoodCharacter.Spells.Fireball.Cast(EnemyCharacter, ()=>{});
 
@@ -28,8 +28,8 @@ test('characters will not go below 0 health', ()=>{
 });
 
 test('fireball can have its effect applied more than once', ()=>{
-    let EnemyCharacter = new Character(10, "Enemy");
-    let GoodCharacter = new Character(10, "Good Guy");
+    let EnemyCharacter = new Character(10, 10, "Enemy");
+    let GoodCharacter = new Character(10, 10, "Good Guy");
 
     GoodCharacter.Spells.Fireball.Cast(EnemyCharacter, ()=>{});
     let healthAfterFirst = EnemyCharacter.Health;
@@ -39,4 +39,13 @@ test('fireball can have its effect applied more than once', ()=>{
     expect(healthAfterSecond).toBeLessThan(healthAfterFirst);
 
 
+});
+
+test('fireball will not be cast if the character does not have enough mana', ()=>{
+    let EnemyCharacter = new Character(10, 10, "Enemy");
+    let GoodCharacter = new Character(10, 1, "Good");
+
+    GoodCharacter.Spells.Fireball.Cast(EnemyCharacter, ()=>{});
+
+    expect(EnemyCharacter.Health).toEqual(10);
 });

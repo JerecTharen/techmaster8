@@ -10,17 +10,18 @@ import CharacterCard from './Character/View/CharacterCard.js';
 function App() {
 
   
-  let PlayerCharacter = new Character(10, "Player");
+  let PlayerCharacter = new Character(10, 10, "Player");
   
-  const [enemyCharacterState, setEnemyCharacterState] = useState(new Character(10, "Enemy"));
+  const [enemyCharacterState, setEnemyCharacterState] = useState(new Character(10, 10, "Enemy"));
 
   const CastFireball = ()=>{
     console.log("Player Character", PlayerCharacter);
-    console.log("Enemy Player", enemyCharacterState.Health);
+    console.log("Enemy Player", enemyCharacterState);
     console.log("Casting Fireball");
     PlayerCharacter.Spells.Fireball.Cast(enemyCharacterState, setEnemyCharacterState);
     console.log("Player Character", PlayerCharacter);
-    console.log("Enemy Player", enemyCharacterState.Health);
+    console.log("Enemy Player", enemyCharacterState);
+    console.log("Done");
   };
 
   return (
