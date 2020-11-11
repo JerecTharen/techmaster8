@@ -10,19 +10,19 @@ import CharacterCard from './Character/View/CharacterCard.js';
 function App() {
 
   
-  let PlayerCharacter = new Character(10, 10, "Player");
+  //let PlayerCharacter = new Character(10, 10, "Player");
   
-  const [enemyCharacterState, setEnemyCharacterState] = useState(new Character(10, 10, "Enemy"));
+  //const [enemyCharacterState, setEnemyCharacterState] = useState(new Character(10, 10, "Enemy"));
 
-  const CastFireball = ()=>{
-    console.log("Player Character", PlayerCharacter);
-    console.log("Enemy Player", enemyCharacterState);
-    console.log("Casting Fireball");
-    PlayerCharacter.Spells.Fireball.Cast(enemyCharacterState, setEnemyCharacterState);
-    console.log("Player Character", PlayerCharacter);
-    console.log("Enemy Player", enemyCharacterState);
-    console.log("Done");
-  };
+  // const CastFireball = ()=>{
+  //   console.log("Player Character", PlayerCharacter);
+  //   console.log("Enemy Player", enemyCharacterState);
+  //   console.log("Casting Fireball");
+  //   PlayerCharacter.Spells.Fireball.Cast(enemyCharacterState, setEnemyCharacterState);
+  //   console.log("Player Character", PlayerCharacter);
+  //   console.log("Enemy Player", enemyCharacterState);
+  //   console.log("Done");
+  // };
 
   return (
     <div className="App">
@@ -40,9 +40,12 @@ function App() {
           Learn React
         </a>
 
-        <CharacterCard Health={PlayerCharacter.Health} Name={PlayerCharacter.Name} />
-        <CharacterCard Health={enemyCharacterState.Health} Name={enemyCharacterState.Name} />
-        <button id="fireballBtn" onClick={CastFireball}>Cast Fireball</button>
+        {/* <CharacterCard Health={PlayerCharacter.Health} Name={PlayerCharacter.Name} />
+        <CharacterCard Health={enemyCharacterState.Health} Name={enemyCharacterState.Name} /> */}
+
+        <Character Name="Player" Health={10} Mana={8} />
+        <Character Name="Enemy" Health={10} Mana={8} />
+        {/* <button id="fireballBtn" onClick={CastFireball}>Cast Fireball</button> */}
       </header>
     </div>
   );

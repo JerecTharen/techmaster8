@@ -1,9 +1,13 @@
+import React from 'react';
+
 
 //Base class for any character (player or otherwise)
-class Character {
-    constructor(health, mana, name){
-        this.Health = health;
-        this.Mana = mana;
+class Character extends React.Component {
+    constructor(props){
+        super(props);
+        this.Health = props.Heath;
+        this.Mana = props.Mana;
+        this.Name = props.Name;
         this.Spells = {
             Fireball: {
                 SpellName: "Fireball",
@@ -24,7 +28,14 @@ class Character {
                 }
             }
         };
-        this.Name = name;
+    }
+
+    render(){
+        return(
+            <div className={this.Health > 0 ? "CharacterCard": "DeadCharacter"}>
+                <h1>{this.Name}: {this.Health} Hit Points {this.Mana} Mana</h1>
+            </div>
+        )
     }
 
     TakeDamage(damage){
