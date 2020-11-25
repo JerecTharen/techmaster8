@@ -9,9 +9,9 @@ import CharacterCard from './Character/View/CharacterCard.js';
 
 function App() {
 
-  
+
   //let PlayerCharacter = new Character(10, 10, "Player");
-  
+
   //const [enemyCharacterState, setEnemyCharacterState] = useState(new Character(10, 10, "Enemy"));
 
   // const CastFireball = ()=>{
@@ -43,7 +43,7 @@ function App() {
         {/* <CharacterCard Health={PlayerCharacter.Health} Name={PlayerCharacter.Name} />
         <CharacterCard Health={enemyCharacterState.Health} Name={enemyCharacterState.Name} /> */}
 
-        <Character Name="Player" Health={10} Mana={8} />
+        <Character Name="Player" Health={10} Mana={8} Targets=[] />
         <Character Name="Enemy" Health={10} Mana={8} />
         {/* <button id="fireballBtn" onClick={CastFireball}>Cast Fireball</button> */}
       </header>
