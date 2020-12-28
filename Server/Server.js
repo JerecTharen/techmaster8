@@ -1,14 +1,14 @@
 const express = require('express');
 
 const server = express();
-const port = 3000;
+const port = 3030;
 
 server.listen(port, ()=>{
     console.log('listening on port: ', port);
 });
 
-server.get('/test', ()=>{
-    return 'testing 123';
+server.get('/test', (req, resp)=>{
+    resp.send('testing 123');
 });
 
 //TODO: Set up get for react application
