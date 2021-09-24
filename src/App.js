@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Character from './Character/Model/Character.js';
 import CharacterCard from './Character/View/CharacterCard.js';
 
 
@@ -43,8 +42,8 @@ function App() {
         {/* <CharacterCard Health={PlayerCharacter.Health} Name={PlayerCharacter.Name} />
         <CharacterCard Health={enemyCharacterState.Health} Name={enemyCharacterState.Name} /> */}
 
-        <Character Name="Player" Health={10} Mana={8} Targets=[] />
-        <Character Name="Enemy" Health={10} Mana={8} />
+        <CharacterCard Name="Player" Health={10} Mana={8} />
+        <CharacterCard Name="Enemy" Health={10} Mana={8} />
         {/* <button id="fireballBtn" onClick={CastFireball}>Cast Fireball</button> */}
       </header>
     </div>

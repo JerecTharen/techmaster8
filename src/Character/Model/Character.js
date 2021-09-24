@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+//TODO: Depricate this
 //Base class for any character (player or otherwise)
 class Character extends React.Component {
     constructor(props){
@@ -19,8 +19,8 @@ class Character extends React.Component {
                         console.log("take damage", this.Targets[this.CurrentTarget].TakeDamage);
                         this.Targets[this.CurrentTarget].TakeDamage(2);
 
-                        if(callback !== undefined)
-                          callback(newVersionOfTarget);
+                        // if(callback !== undefined)
+                        //   callback(newVersionOfTarget);
                     }
                     else{
                         console.log("no mana");

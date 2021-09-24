@@ -7,7 +7,7 @@ const CharacterCard = (props)=>{
 
     return(
         <div className={props.Health > 0 ? "CharacterCard": "DeadCharacter"}>
-            <h1>{props.Name}: {props.Health} Hit Points</h1>
+            <h1>{props.Name}: {props.Health} Hit Points, {props.Mana} Mana</h1>
         </div>
     );
 };
