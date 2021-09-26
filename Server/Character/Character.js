@@ -1,4 +1,4 @@
-import {Spell} from './Spell/Spell.js';
+const Spell = require('../Spell/Spell.js');
 
 //Base class for any character (player or otherwise)
 module.exports = class Character{
