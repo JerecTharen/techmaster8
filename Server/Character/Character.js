@@ -37,7 +37,8 @@ module.exports = class Character{
         //Apply damage reducers
         damage = damage / this.getDamageReducers();
         //Apply damage subtractors
-        damage = damage - this.getDamageSubtractors();
+        let totalSubtractors = this.getDamageSubtractors();
+        damage = damage - (totalSubtractors > damage ? damage : totalSubtractors);
 
         this.CurrentHealth = damage > this.CurrentHealth ? 0 : this.CurrentHealth - damage;
     };
