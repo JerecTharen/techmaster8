@@ -1,4 +1,5 @@
 const Spell = require('../Spell/Spell.js');
+const NullHelper = require('../Helpers/NullHelper.js');
 
 //Base class for any character (player or otherwise)
 module.exports = class Character{
@@ -26,6 +27,8 @@ module.exports = class Character{
     };
 
     TakeDamage = (sourcesArr) => {
+        if(NullHelper.GetIsNully(sourcesArr))
+            sourcesArr = [];
         let damage = 0;
         //get base damage from sources
         damage = this.getBaseDamage(sourcesArr);
@@ -36,7 +39,7 @@ module.exports = class Character{
         //Apply damage subtractors
         damage = damage - this.getDamageSubtractors();
 
-        this.MaxHealth = damage > this.MaxHealth ? 0 : this.MaxHealth - damage;
+        this.CurrentHealth = damage > this.CurrentHealth ? 0 : this.CurrentHealth - damage;
     };
 
     getBaseDamage = (sourcesArr) => {
@@ -54,7 +57,7 @@ module.exports = class Character{
     };
 
     getDamageMultipliers = () => {
-        let multiplierAmt = 1;
+        let multiplierAmt = NullHelper.GetIsEmpty(this.damageMultipliers) ? 1 : 0;
 
         //Add in aditional multipliers
         for(let mi = 0; mi < this.damageMultipliers.length; mi++){
@@ -65,7 +68,7 @@ module.exports = class Character{
     };
 
     getDamageReducers = () => {
-        let damageReducerAmt = 1;
+        let damageReducerAmt = NullHelper.GetIsEmpty(this.damageReducers) ? 1 : 0;
 
         //Add additional reducers
         for(let dr = 0; dr < this.damageReducers.length; dr++){
