@@ -21,4 +21,3 @@ module.exports = class Spell{
     };
 }
 
-//export default Character;

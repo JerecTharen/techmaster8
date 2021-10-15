@@ -1,13 +1,23 @@
-import { useState} from "react";
-import React from 'react';
+import { useState, useEffect} from "react";
+import React from "react";
 import "./CharacterCard.css";
 
-const CharacterCard = (props)=>{
-    //const [characterHealth, setCharacterHealth] = useState(props.Health);
+const CharacterCard = ()=>{
+    const [character, setCharacter] = useState({});
+
+    useEffect(()=>{
+        fetch('/player').then(resp => {
+            console.log('received response: ', resp);
+            if(resp.ok)
+                return resp.json();
+        })
+        .then((respJson) => setCharacter(respJson))
+        .catch(err => console.error(err));
+    });
 
     return(
-        <div className={props.Health > 0 ? "CharacterCard": "DeadCharacter"}>
-            <h1>{props.Name}: {props.Health} Hit Points, {props.Mana} Mana</h1>
+        <div className={character.CurrentHealth > 0 ? "CharacterCard": "DeadCharacter"}>
+            <h1>{character.CharacterName}: {character.CurrentHealth} Hit Points, {character.CurrentMana} Mana</h1>
         </div>
     );
 };

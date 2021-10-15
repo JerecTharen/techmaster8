@@ -42,8 +42,8 @@ function App() {
         {/* <CharacterCard Health={PlayerCharacter.Health} Name={PlayerCharacter.Name} />
         <CharacterCard Health={enemyCharacterState.Health} Name={enemyCharacterState.Name} /> */}
 
-        <CharacterCard Name="Player" Health={10} Mana={8} />
-        <CharacterCard Name="Enemy" Health={10} Mana={8} />
+        <CharacterCard />
+        <CharacterCard />
         {/* <button id="fireballBtn" onClick={CastFireball}>Cast Fireball</button> */}
       </header>
     </div>

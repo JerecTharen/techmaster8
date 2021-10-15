@@ -10,8 +10,8 @@ const port = 3030;
 server.use(bodyParser.urlencoded({ extended: true }));
 
 //Characters
-let pc = new Character(10, 6, 'Player');
-let npc = new Character(4, 2, 'Enemy');
+let pc = new Character(1, 'Player', 10, 10);
+let npc = new Character(2, 'Enemy', 4, 10);
 
 server.listen(port, ()=>{
     console.log('listening on port: ', port);
@@ -26,6 +26,9 @@ server.get('/test', (req, resp)=>{
 //TODO: Return new character
 server.get('/player', (req, resp) =>{
     resp.send(JSON.stringify(pc));
+});
+server.get('/enemy', (req, resp) => {
+    resp.send(JSON.stringify(npc));
 });
 server.post('/castFireball', (req, resp) => {
     //TODO: Determine if form parameters will be stored on the req variable or in the url
