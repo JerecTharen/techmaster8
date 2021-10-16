@@ -1,13 +1,14 @@
 import { useState, useEffect} from "react";
 import React from "react";
 import "./CharacterCard.css";
+import CharacterDAL from "../DAL/CharacterDAL.js";
 
-const CharacterCard = ()=>{
+const CharacterCard = (props)=>{
     const [character, setCharacter] = useState({});
 
     useEffect(()=>{
-        fetch('/player').then(resp => {
-            console.log('received response: ', resp);
+        let DAL = props.isPlayer ? new CharacterDAL().GetPlayer() : new CharacterDAL().GetEnemy();
+        DAL.then(resp => {
             if(resp.ok)
                 return resp.json();
         })
