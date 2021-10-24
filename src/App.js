@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import CharacterCard from './Character/View/CharacterCard.js';
+
+
+//let EnemyCharacter = Character();
 
 function App() {
+
+
+  //let PlayerCharacter = new Character(10, 10, "Player");
+
+  //const [enemyCharacterState, setEnemyCharacterState] = useState(new Character(10, 10, "Enemy"));
+
+  // const CastFireball = ()=>{
+  //   console.log("Player Character", PlayerCharacter);
+  //   console.log("Enemy Player", enemyCharacterState);
+  //   console.log("Casting Fireball");
+  //   PlayerCharacter.Spells.Fireball.Cast(enemyCharacterState, setEnemyCharacterState);
+  //   console.log("Player Character", PlayerCharacter);
+  //   console.log("Enemy Player", enemyCharacterState);
+  //   console.log("Done");
+  // };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +38,13 @@ function App() {
         >
           Learn React
         </a>
+
+        {/* <CharacterCard Health={PlayerCharacter.Health} Name={PlayerCharacter.Name} />
+        <CharacterCard Health={enemyCharacterState.Health} Name={enemyCharacterState.Name} /> */}
+
+        <CharacterCard isPlayer="true" />
+        <CharacterCard isPlyaer="false" />
+        {/* <button id="fireballBtn" onClick={CastFireball}>Cast Fireball</button> */}
       </header>
     </div>
   );
